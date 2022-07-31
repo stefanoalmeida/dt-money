@@ -1,0 +1,40 @@
+.content {
+  max-width: 1120px;
+
+  margin-top: 64px;
+}
+
+.content table {
+  width: 100%;
+  border-spacing: 0 8px;
+
+  color: var(--texts);
+
+  text-align: left;
+}
+
+.content th {
+  padding: 0 32px 20px;
+}
+
+.content td:nth-child(1){
+  color: var(--titles);
+}
+
+.content td  {
+  background-color: var(--shape);
+
+  margin-bottom: 8px;
+  padding: 20px 32px;
+  height: 64px;
+
+  border-radius: 5px;
+}
+
+.income {
+  color: var(--green);
+}
+
+.outcome {
+  color: var(--red);
+}
