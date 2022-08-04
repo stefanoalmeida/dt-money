@@ -2,13 +2,14 @@ import styles from './Header.module.css'
 
 import logo from '../assets/logo.svg'
 
-export function Header() {
+export function Header({onOpenNewTransactionModal}) {
+
   return (
     <div className={styles.container}>
       <header>
         <img src={logo} alt="Logotipo" />
 
-        <button>Nova transação</button>
+        <button onClick={onOpenNewTransactionModal}>Nova transação</button>
       </header>
     </div>
   )
