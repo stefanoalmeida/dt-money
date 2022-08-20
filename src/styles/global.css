@@ -65,3 +65,11 @@ body, input, textarea, button {
 .activeOutcome {
   background-color: rgba(180, 0, 0, 0.1);
 }
+
+.income {
+  color: var(--green);
+}
+
+.outcome {
+  color: var(--red);
+}

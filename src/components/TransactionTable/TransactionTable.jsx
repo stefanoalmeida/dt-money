@@ -1,17 +1,12 @@
-import { useEffect, useState } from 'react'
-import { api } from '../services/api'
+import { useTransactions } from '../../hooks/useTransactions'
 import styles from './TransactionTable.module.css'
 
 export function TransactionTable() {
 
-  const [transactions, setTransactions] = useState([])
-
-  useEffect(() => {
-    api.get('transactions')
-      .then(response  => setTransactions(response.data.transactions))
-  }, [])
+  const {transactions} = useTransactions()
   
   return (
+
     <div className={styles.content}>
       <table>
         <thead>
@@ -26,7 +21,7 @@ export function TransactionTable() {
           {transactions.map(transaction => (
             <tr key={transaction.id}>
               <td>{transaction.title}</td>
-              <td className={transaction.type}>{new Intl.NumberFormat('pt-BR', {
+              <td className={transaction.type === 'deposit' ? 'income' : 'outcome'}>{new Intl.NumberFormat('pt-BR', {
                 style: 'currency',
                 currency: 'BRL'
               }).format(transaction.amount)}</td>

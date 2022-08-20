@@ -1,11 +1,12 @@
 import styles from './App.module.css'
 import Modal from 'react-modal'
 import { useState } from 'react'
-import { Dashboard } from './components/Dashboard'
-import { Header } from './components/Header'
+import { Dashboard } from './components/Dashboard/Dashboard'
+import { Header } from './components/Header/Header'
 
-import './global.css'
-import { NewTransactionModal } from './components/NewTransactionModal'
+import './styles/global.css'
+import { NewTransactionModal } from './components/NewTransactionModal/NewTransactionModal'
+import { TransactionsProvider } from './hooks/useTransactions'
 
 Modal.setAppElement("#root")
 
@@ -22,15 +23,17 @@ export function App() {
   }
 
   return (
-    <div className={styles.container}>
-      <Header onOpenNewTransactionModal={handleOpenNewTransactionModal}/>
-      
-      <NewTransactionModal isOpen={isNewTransactionModalOpen} onRequestClose={handleCloseNewTransactionModal}/>
+    <TransactionsProvider>
+      <div className={styles.container}>
+        <Header onOpenNewTransactionModal={handleOpenNewTransactionModal}/>
+        
+        <NewTransactionModal isOpen={isNewTransactionModalOpen} onRequestClose={handleCloseNewTransactionModal}/>
 
-      <Dashboard/>
+        <Dashboard/>
 
 
-    </div>
+      </div>
+    </TransactionsProvider>
   )
 }
 
